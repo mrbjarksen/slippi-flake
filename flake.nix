@@ -8,7 +8,7 @@
       systems = [ "x86_64-linux" ];
       forAllSystems = nixpkgs.lib.genAttrs systems;
       mkPkgs = pkgs: rec {
-        slippi-launcher = pkgs.callPackage ./slippi-launcher.nix { inherit slippi-netplay slippi-playback; };
+        slippi-launcher = pkgs.callPackage ./slippi-launcher.nix { };
         slippi-netplay = pkgs.callPackage ./ishiiruka.nix { isPlayback = false; };
         slippi-playback = pkgs.callPackage ./ishiiruka.nix { isPlayback = true; };
       };
@@ -93,8 +93,8 @@
               (mkIf cfg.netplay.enable cfg.netplay.package)
               (mkIf cfg.playback.enable cfg.playback.package)
             ];
-            xdg.configFile."Slippi Launcher/netplay/dolphin-emu".source = ${lib.getExe cfg.netplay.package};
-            xdg.configFile."Slippi Launcher/playback/dolphin-emu".source = ${lib.getExe cfg.playback.package};
+            xdg.configFile."Slippi Launcher/netplay/dolphin-emu".source = "${lib.getExe cfg.netplay.package}";
+            xdg.configFile."Slippi Launcher/playback/dolphin-emu".source = "${lib.getExe cfg.playback.package}";
             xdg.configFile."Slippi Launcher/Settings".source =
               let
                 jsonFormat = pkgs.formats.json { };
