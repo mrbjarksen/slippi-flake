@@ -59,7 +59,7 @@
               };
               useMonthlySubfolders = mkEnableOption "Save replays to monthly subfolders";
               spectateSlpPath = mkOption {
-                default = "${cfg.slippi.launcher.rootSlpPath}/Spectate";
+                default = "${cfg.launcher.rootSlpPath}/Spectate";
                 type = types.nullOr types.str;
                 description = "The folder where spectated games should be saved.";
               };
@@ -109,10 +109,6 @@
                   useMonthlySubfolders = cfg.launcher.useMonthlySubfolders;
                   spectateSlpPath = cfg.launcher.spectateSlpPath;
                   extraSlpPaths = cfg.launcher.extraSlpPaths;
-                  # Netplay
-                  netplayDolphinPath = cfg.launcher.netplayDolphinPath;
-                  # Playback
-                  playbackDolphinPath = cfg.launcher.playbackDolphinPath;
                   # Advanced settings
                   autoUpdateLauncher = false;
                 };
