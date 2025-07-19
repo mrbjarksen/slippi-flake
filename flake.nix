@@ -59,7 +59,7 @@
               };
               useMonthlySubfolders = mkEnableOption "Save replays to monthly subfolders";
               spectateSlpPath = mkOption {
-                default = "${cfg.slippi-launcher.rootSlpPath}/Spectate";
+                default = "${cfg.slippi.launcher.rootSlpPath}/Spectate";
                 type = types.nullOr types.str;
                 description = "The folder where spectated games should be saved.";
               };
@@ -101,12 +101,12 @@
               in
               jsonFormat.generate "slippi-config" {
                 settings = {
-                  isoPath = cfg.slippi-launcher.isoPath;
-                  launchMeleeOnPlay = cfg.slippi-launcher.launchMeleeOnPlay;
-                  enableJukebox = cfg.slippi-launcher.enableJukebox;
+                  isoPath = cfg.launcher.isoPath;
+                  launchMeleeOnPlay = cfg.launcher.launchMeleeOnPlay;
+                  enableJukebox = cfg.launcher.enableJukebox;
                   # Replay settings
-                  rootSlpPath = cfg.slippi-launcher.rootSlpPath;
-                  useMonthlySubfolders = cfg.slippi-launcher.useMonthlySubfolders;
+                  rootSlpPath = cfg.launcher.rootSlpPath;
+                  useMonthlySubfolders = cfg.launcher.useMonthlySubfolders;
                   spectateSlpPath = cfg.launcher.spectateSlpPath;
                   extraSlpPaths = cfg.launcher.extraSlpPaths;
                   # Netplay
