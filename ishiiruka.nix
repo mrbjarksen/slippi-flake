@@ -70,8 +70,8 @@ in
 
     desktopItems = [
       (makeDesktopItem {
-        name = "slippi-${type}";
-        exec = "slippi-${type}";
+        name = "${pname}";
+        exec = "${meta.mainProgram}";
         comment = if isPlayback then "Play Melee online" else "Watch Melee replays";
         desktopName = if isPlayback then "Slippi (Playback)" else "Slippi (Netplay)";
         genericName = "Wii/GameCube Emulator";
@@ -148,21 +148,18 @@ in
     doInstallCheck = true;
 
     postBuild = ''
-      rm -rf ./Binaries/Sys
-      cp -r ../Data/Sys/ ./Binaries/
+      mkdir -p $out/bin $out/lib
+      cp ./Binaries/dolphin-emu $out/bin/${meta.mainProgram}
+      cp $build/build/source/build/Source/Core/DolphinWX/libslippi_rust_extensions.so $out/lib
+      cp -r ../Data/Sys/ $out/
     ''
     + lib.optionalString isPlayback ''
-      rm -rf ./Binaries/Sys/GameSettings
-      cp -r ../Data/PlaybackGeckoCodes/ ./Binaries/Sys/GameSettings/
-    ''
-    + ''
-      cp -r ./Binaries/ $out
-      mkdir -p $out/lib
-      cp $build/build/source/build/Source/Core/DolphinWX/libslippi_rust_extensions.so $out/lib
+      rm -rf $out/Sys/GameSettings
+      cp -r ../Data/PlaybackGeckoCodes/ $out/Sys/GameSettings/
     '';
 
     installPhase = ''
-      makeWrapper "$out/dolphin-emu" "$out/bin/slippi-${type}" \
+      wrapProgram "$out/bin/${meta.mainProgram}" \
         --set "GDK_BACKEND" "x11" \
         --prefix GIO_EXTRA_MODULES : "${glib-networking}/lib/gio/modules" \
         --prefix LD_LIBRARY_PATH : "${vulkan-loader}/lib" \
