@@ -1,4 +1,6 @@
 {
+  description = "Nix flake for Slippi Online";
+
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
@@ -14,7 +16,7 @@
       };
     in
     {
-      overlays.slippi-flake = final: prev: mkPkgs final;
+      overlays.slippi = final: prev: mkPkgs final;
 
       packages = forAllSystems (system: mkPkgs nixpkgs.legacyPackages.${system});
 
