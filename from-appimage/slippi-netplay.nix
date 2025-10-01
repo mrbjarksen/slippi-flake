@@ -19,6 +19,7 @@ let
 in
 appimageTools.wrapType2 rec {
   inherit pname version src;
+  extraPkgs = pkgs: [ pkgs.curl ];
 
   meta = {
     description = "The way to play Slippi Online";
