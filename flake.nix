@@ -10,9 +10,9 @@
       systems = [ "x86_64-linux" ];
       forAllSystems = nixpkgs.lib.genAttrs systems;
       mkPkgs = pkgs: rec {
-        slippi-launcher = pkgs.callPackage ./slippi-launcher.nix { };
-        slippi-netplay = pkgs.callPackage ./ishiiruka.nix { isPlayback = false; };
-        slippi-playback = pkgs.callPackage ./ishiiruka.nix { isPlayback = true; };
+        slippi-launcher = pkgs.callPackage ./from-appimage/slippi-launcher.nix { };
+        slippi-netplay = pkgs.callPackage ./from-appimage/slippi-netplay.nix { };
+        slippi-playback = pkgs.callPackage ./from-appimage/slippi-playback.nix { };
       };
     in
     {

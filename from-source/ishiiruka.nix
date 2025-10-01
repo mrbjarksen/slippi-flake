@@ -58,13 +58,13 @@ let
 in
   stdenv.mkDerivation rec {
     pname = "slippi-${type}";
-    version = "3.4.6";
+    version = "3.5.1";
 
     src = fetchFromGitHub {
       owner = "project-slippi";
       repo = "Ishiiruka";
       rev = "v${version}";
-      hash = "sha256-yiu0ObLc0qbE3r9xUnm0ktpoH/i1k16JqGxgm5KIkGI=";
+      hash = "sha256-VW49r3cgMwfrukeAYglffMlkgwDAky5yumJLqnaoWAA=";
       fetchSubmodules = true;
     };
 
@@ -132,7 +132,6 @@ in
     cargoRoot = "Externals/SlippiRustExtensions";
     cargoDeps = rustPlatform.importCargoLock {
       lockFile = "${src}/${cargoRoot}/Cargo.lock";
-      outputHashes."cpal-0.15.2" = "sha256-4C7YWUx6SZnZy6pwy0CCL3yPgaMflN1atN3cUNMbcmU=";
     };
 
     cmakeFlags = [
