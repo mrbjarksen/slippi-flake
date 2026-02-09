@@ -6,11 +6,11 @@
 
 let
   pname = "slippi-playback";
-  version = "3.5.1";
+  version = "3.5.2";
 
   archive = fetchzip {
-    url = "https://github.com/project-slippi/Ishiiruka-Playback/releases/download/v${version}/playback-3.5.1-Linux.zip";
-    hash = "sha256-uXnvbPVNRIZn5wfPfb8jKGr/sBG87UFamFwSiOZZ3hg=";
+    url = "https://github.com/project-slippi/Ishiiruka-Playback/releases/download/v${version}/playback-${version}-Linux.zip";
+    hash = "sha256-LWo5gIXQck4dq9uKOYWElPsIUw2/GcMboteQsAx549k=";
     stripRoot = false;
   };
 
